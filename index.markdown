@@ -8,7 +8,7 @@
 
 I have a passion for building things. There is a game-like satisfaction that I get from getting something to work. It’s also an honest way to make a living. In the last five years of working as a mechanical engineer with automated equipment and robots, I’ve become increasingly interested in web development. Why? Every time I would think about the best way to solve a problem in the manufacturing world, I found myself dreaming up a software solution. I’ve really enjoyed the Agile-SCRUM style group work at NSS. I often find myself focusing on the data flow, and I enjoy debugging code with my classmates.
 
-Over the past five years, I’ve dabbled in a lot of different hobbies. The latest is yoga! I’m a total beginner and I love it. Ongoing and past hobbies include rock climbing, hiking, Crossfit, painting, and 3D printing. I’m active in a church, but I realize that some people don’t like to talk about church or faith, and I respect that. I like learning what other people are passionate about, and exploring new things!
+Over the past five years, I’ve dabbled in a lot of different hobbies. The latest is yoga! I’m a total beginner and I love it. Ongoing and past hobbies include rock climbing, hiking, Crossfit, painting, and 3D printing. I like learning what other people are passionate about, and exploring new things!
 # Tech Stacks
 
 - HTML
