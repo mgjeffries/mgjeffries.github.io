@@ -16,3 +16,13 @@
   .layout-minimal .inner{padding:20px}
   .layout-minimal img{max-width:120px}
 }
+
+/* Two-column layout variant */
+.layout-two-column .inner{max-width:980px;display:grid;grid-template-columns:260px 1fr;gap:30px;padding:30px}
+.layout-two-column .sidebar{background:#ffffff;padding:20px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.layout-two-column .main{background:#ffffff;padding:30px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.layout-two-column img{max-width:200px;border-radius:6px}
+
+@media screen and (max-width:720px){
+  .layout-two-column .inner{grid-template-columns:1fr;}
+}
