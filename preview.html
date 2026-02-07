@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <title>Gib Jeffries | Web Developer and Mechanical Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background: #ffffff;
+        }
+
+        /* Modern Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" fill="white" opacity="0.05"/></svg>');
+            opacity: 0.1;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 22px;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 32px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .email-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-height: 36px; /* Better touch target */
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .copy-btn.copied {
+            background: rgba(76, 175, 80, 0.8);
+        }
+
+        .connect-email-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 28px;
+            background: white;
+            color: #667eea;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .connect-copy-btn {
+            background: #667eea;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            min-height: 44px; /* Better touch target */
+        }
+
+        .connect-copy-btn:hover {
+            background: #5a67d8;
+        }
+
+        .connect-copy-btn.copied {
+            background: #4caf50;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            background: #f7fafc;
+            padding: 40px;
+            border-radius: 16px;
+            border-left: 4px solid #667eea;
+            margin-top: 32px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #4a5568;
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .skill-category h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skill-category i {
+            font-size: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            color: #5a67d8;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid #667eea30;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-content {
+            padding: 28px;
+        }
+
+        .project-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #2d3748;
+        }
+
+        .project-card p {
+            color: #4a5568;
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .project-icon {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            color: #667eea;
+        }
+
+        /* Connect Section */
+        .connect-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 40px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+            margin-top: 32px;
+        }
+
+        .connect-content h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: white;
+        }
+
+        .connect-content p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        .connect-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .connect-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            .tagline { font-size: 18px; }
+            .section-title { font-size: 28px; }
+            .header { padding: 60px 20px; }
+            .profile-photo { width: 130px; height: 130px; }
+            .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+
+            .social-links {
+                flex-direction: column;
+                align-items: stretch;
+                max-width: 400px;
+                margin: 24px auto 0;
+            }
+
+            .social-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .email-container {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .connect-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .connect-btn, .connect-email-container {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .container {
+                padding: 40px 16px;
+            }
+
+            .about-content {
+                padding: 24px;
+            }
+
+            section {
+                margin-bottom: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 28px; }
+            .tagline { font-size: 16px; }
+            .section-title { font-size: 24px; }
+            .header { padding: 40px 16px; }
+            .profile-photo { width: 110px; height: 110px; }
+
+            .social-btn, .email-container {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+
+            .email-container {
+                gap: 6px;
+            }
+
+            .email-container span {
+                font-size: 13px;
+            }
+
+            .copy-btn {
+                padding: 5px 10px;
+                font-size: 11px;
+            }
+
+            .about-content {
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            .about-content p {
+                font-size: 16px;
+            }
+
+            .skill-category {
+                padding: 24px;
+            }
+
+            .skill-category h3 {
+                font-size: 20px;
+            }
+
+            .skill-tag {
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+
+            .project-content {
+                padding: 20px;
+            }
+
+            .project-card h3 {
+                font-size: 20px;
+            }
+
+            .project-card p {
+                font-size: 15px;
+            }
+
+            .project-link {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .connect-content {
+                padding: 40px 24px;
+                border-radius: 12px;
+            }
+
+            .connect-content h2 {
+                font-size: 28px;
+            }
+
+            .connect-content p {
+                font-size: 16px;
+            }
+
+            .connect-btn, .connect-email-container {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .connect-email-container span {
+                font-size: 13px;
+            }
+
+            .connect-copy-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .email-container {
+                font-size: 12px;
+            }
+
+            .email-container span {
+                font-size: 11px;
+            }
+
+            .copy-btn {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+    <script>
+        function copyEmail(button, location) {
+            const email = 'Gib.jeffries@gmail.com';
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(email).then(() => {
+                // Change button text and icon
+                const icon = button.querySelector('i');
+                const originalHTML = button.innerHTML;
+
+                icon.className = 'fas fa-check';
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.classList.add('copied');
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy email. Please copy manually: ' + email);
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <img src="GibJeffriesHeadshot.jpeg" alt="Gib Jeffries" class="profile-photo">
+            <h1>Gib Jeffries</h1>
+            <p class="tagline">Web Developer & Mechanical Engineer</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/gib-jeffries/" class="social-btn" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <div class="email-container">
+                    <i class="fas fa-envelope"></i>
+                    <span>Gib.jeffries@gmail.com</span>
+                    <button class="copy-btn" onclick="copyEmail(this, 'header')">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                </div>
+                <a href="https://github.com/mgjeffries" class="social-btn" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I have a passion for building things. There is a game-like satisfaction that I get from getting something to work. It's also an honest way to make a living. In the last five years of working as a mechanical engineer with automated equipment and robots, I've become increasingly interested in web development. Why? Every time I would think about the best way to solve a problem in the manufacturing world, I found myself dreaming up a software solution. I've really enjoyed the Agile-SCRUM style group work at NSS. I often find myself focusing on the data flow, and I enjoy debugging code with my classmates.</p>
+                <p>Over the past five years, I've dabbled in a lot of different hobbies. The latest is yoga! I'm a total beginner and I love it. Ongoing and past hobbies include rock climbing, hiking, Crossfit, painting, and 3D printing. I like learning what other people are passionate about, and exploring new things!</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Software Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C# Asp.Net</span>
+                        <span class="skill-tag">Blazor</span>
+                        <span class="skill-tag">Javascript</span>
+                        <span class="skill-tag">React + Hooks</span>
+                        <span class="skill-tag">Python + Django</span>
+                        <span class="skill-tag">SQL Queries</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-cogs"></i> Hardware & CAD</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Solidworks</span>
+                        <span class="skill-tag">Onshape</span>
+                        <span class="skill-tag">Robot EOAT Design</span>
+                        <span class="skill-tag">3D Printing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">My Work</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Front-End Capstone</h3>
+                        <p>A comprehensive front-end application showcasing modern web development practices and user interface design.</p>
+                        <a href="https://youtu.be/gP_i7jAj6s8" class="project-link" target="_blank">
+                            Watch Demo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Full-Stack Capstone</h3>
+                        <p>A complete full-stack application demonstrating end-to-end development from database to user interface.</p>
+                        <a href="https://youtu.be/rXQJehALSc8" class="project-link" target="_blank">
+                            Watch Demo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Publishing App (Team Project)</h3>
+                        <p>A collaborative full-stack publishing application built with a team, featuring content management and user workflows.</p>
+                        <a href="https://youtu.be/TH54EudEglA" class="project-link" target="_blank">
+                            Watch Demo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect Section -->
+        <section id="connect">
+            <div class="connect-content">
+                <h2>Let's Connect!</h2>
+                <p>Interested in collaborating or just want to chat? Reach out!</p>
+                <div class="connect-buttons">
+                    <a href="https://www.linkedin.com/in/gib-jeffries/" class="connect-btn" target="_blank">
+                        <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                    </a>
+                    <div class="connect-email-container">
+                        <i class="fas fa-envelope"></i>
+                        <span>Gib.jeffries@gmail.com</span>
+                        <button class="connect-copy-btn" onclick="copyEmail(this, 'connect')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <a href="https://github.com/mgjeffries" class="connect-btn" target="_blank">
+                        <i class="fab fa-github"></i> View GitHub Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
